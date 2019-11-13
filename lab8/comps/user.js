@@ -1,5 +1,5 @@
 import React,  {useState,  useEffect} from 'react';
-import {View,Text,TextInput, Button,} from 'react-native';
+import {View,Text,TextInput, Button} from 'react-native';
 import axios from 'axios';
 import UserCard from './UserCard'
 
@@ -20,7 +20,7 @@ function  User()  {
                 password:password
             }
         }
-        var r = await axios.post('http://99.199.131.137:3001/post', obj);
+        var r = await axios.post('http://localhost:3001/post', obj);
         console.log("Create", r.data);
         ReadUsers();
     }
@@ -31,7 +31,7 @@ function  User()  {
             data:{}
         }
 
-        var r = await axios.post('http://99.199.131.137:3001/post', obj);
+        var r = await axios.post('http://localhost:3001/post', obj);
        
         var dbusers = JSON.parse(r.data.body);
         console.log("Read", r.dbusers);
@@ -47,7 +47,7 @@ function  User()  {
             <TextInput
                 placeholder="email"
                 onChangeText={(t)=>{
-
+                    email=t;
                 }}
                 autoCapitalize="none"
             />
@@ -78,6 +78,7 @@ function  User()  {
                  email={obj.email}
                 password={obj.password}
                 hash={obj.hash}
+                ReadUsers = {ReadUsers}
               />
           })
       }
