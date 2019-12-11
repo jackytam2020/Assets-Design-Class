@@ -1,0 +1,16 @@
+[
+  {
+    "model":"users",
+    "cols":["id", "email", "password", "hash"],
+    "colstype":["SERIAL PRIMARY KEY", "TEXT", "TEXT", "TEXT"],
+    "order":["id"],
+    "encrypt":["password"],
+    "hash":["hash"]
+  },
+  {
+    "model":"comments",
+    "cols":["id", "user_id", "title", "comments"],
+    "colstype":["SERIAL PRIMARY KEY", "INTEGER REFERENCES users(id) ON DELETE CASCADE", "TEXT", "TEXT"],
+    "order":["id"]
+  }
+]
